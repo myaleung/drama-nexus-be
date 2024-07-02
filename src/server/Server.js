@@ -12,7 +12,7 @@ export default class Server {
   #corsOptions = {
     origin: this.#allowedOrigin, //allow only the react front end to be the origin
     credentials: true, //allow for the use of the auth tokens
-    methods: ['GET', 'POST', 'PATCH', 'PUT'], //allowed methods
+    methods: ['GET', 'DELETE', 'POST', 'PATCH', 'PUT'], //allowed methods
     allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization', 'x-access-token', 'x-userprofile'], //allowed headers
   };
 
@@ -30,7 +30,7 @@ export default class Server {
   };
 
   start = () => {
-    this.#app.use(cors());
+    this.#app.use(cors(this.#corsOptions));
     this.#server = this.#app.listen(this.#port, this.#host, () => {
       console.log(`Server is listening on http://${this.#host}:${this.#port}`);
     });
