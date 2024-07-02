@@ -7,15 +7,24 @@ export default class DramaRoutes {
   #controller;
   #router;
   #routeStartPoint;
+  #origin;
 
   constructor(controller = new ReviewController(), routeStartPoint = "/") {
     this.#controller = controller;
     this.#routeStartPoint = routeStartPoint;
     this.#router = Router();
     this.#initialiseRoutes();
+    this.#origin = process.env.FRONT_END_URL;
   }
 
   #initialiseRoutes = () => {
+    this.#router.use((req, res, next) => {
+      res.header("Access-Control-Allow-Origin", this.#origin);
+      res.header("Access-Control-Allow-Methods", "POST, PUT");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-access-token, x-userprofile");
+      res.header("Access-Control-Allow-Credentials", "true");
+      next();
+    });
     // this.#router.put(
     //   "/drama/:id/edit-review/:reviewId",
     //   Jwt.verifyToken,

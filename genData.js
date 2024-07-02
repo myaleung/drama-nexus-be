@@ -112,5 +112,5 @@ async function fatchCastAndSaveToFile() {
   }
 }
 
-// fetchDataAndSaveToFile();  //dramas
-// fatchCastAndSaveToFile();  //cast info
+fetchDataAndSaveToFile();  //dramas
+fatchCastAndSaveToFile();  //cast info
