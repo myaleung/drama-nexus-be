@@ -1,0 +1,38 @@
+{
+	"name": "drama-nexus-backend",
+	"version": "1.0.0",
+	"description": "A database application tailored for Korean Dramas, where users can write or read reviews and give ratings on their favorite K-dramas. Catering to a niche market, making it easier for drama enthusiasts to find, share, and discuss shows, fostering a focused and vibrant community.",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"start": "cross-env NODE_ENV=development nodemon index.js",
+		"build": "cross-env NODE_ENV=production nodemon index.js",
+		"test": "cross-env NODE_ENV=test mocha --timeout 10000 --exit --recursive",
+		"coverage": "cross-env NODE_ENV=test c8 -t html npm test",
+		"genData": "cross-env NODE_ENV=development node genData.js"
+	},
+	"keywords": [],
+	"author": "Amy Leung",
+	"license": "MIT",
+	"dependencies": {
+		"bcrypt": "^5.1.1",
+		"cors": "^2.8.5",
+		"dotenv": "^16.4.5",
+		"express": "^4.19.2",
+		"express-validator": "^7.1.0",
+		"jsonwebtoken": "^9.0.2",
+		"mongoose": "^8.4.1",
+		"nodemailer": "^6.9.14"
+	},
+	"devDependencies": {
+		"axios": "^1.7.2",
+		"c8": "^9.1.0",
+		"chai": "^4.4.1",
+		"chai-http": "^4.4.0",
+		"concurrently": "^8.2.2",
+		"cross-env": "^7.0.3",
+		"mocha": "^10.4.0",
+		"sinon": "^18.0.0",
+		"supertest": "^7.0.0"
+	}
+}
