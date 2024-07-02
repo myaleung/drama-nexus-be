@@ -31,12 +31,12 @@ export default class Server {
 
   start = () => {
     this.#app.use(cors(this.#corsOptions));
-    this.#server = this.#app.listen(this.#port, this.#host, () => {
-      console.log(`Server is listening on http://${this.#host}:${this.#port}`);
-    });
     this.#app.use(express.json());
     this.#router.getRouter().forEach((router) => {
       this.#app.use(router.getRouteStartPoint(), router.getRouter());
+    });
+    this.#server = this.#app.listen(this.#port, this.#host, () => {
+      console.log(`Server is listening on http://${this.#host}:${this.#port}`);
     });
   };
 
