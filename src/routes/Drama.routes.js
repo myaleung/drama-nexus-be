@@ -10,12 +10,12 @@ export default class DramaRoutes {
   #routeStartPoint;
   #origin;
 
-  constructor(controller = new DramaController(), routeStartPoint = "/") {
+  constructor(origin = "http://localhost:5173", controller = new DramaController(), routeStartPoint = "/") {
+    this.#origin = origin;
     this.#controller = controller;
     this.#routeStartPoint = routeStartPoint;
     this.#router = Router();
     this.#initialiseRoutes();
-    this.#origin = process.env.FRONT_END_URL;
   }
 
   #initialiseRoutes = () => {

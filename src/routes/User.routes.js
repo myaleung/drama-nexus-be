@@ -10,12 +10,12 @@ export default class UserRoutes {
   #routeStartPoint;
   #origin;
 
-  constructor(controller = new UserController(), routeStartPoint = "/") {
+  constructor(origin = "http://localhost:5173", controller = new UserController(), routeStartPoint = "/") {
+    this.#origin = origin;
     this.#controller = controller;
     this.#routeStartPoint = routeStartPoint;
     this.#router = Router();
     this.#initialiseRoutes();
-    this.#origin = process.env.FRONT_END_URL;
   }
 
   #initialiseRoutes = () => {
