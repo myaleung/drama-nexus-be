@@ -16,7 +16,7 @@ const userRoutes = new UserRoutes(ALLOWED_ORIGIN);
 router.addRouter(dramaRoutes);
 router.addRouter(reviewRoutes);
 router.addRouter(userRoutes);
-const server = new Server(PORT, HOST, router);
+const server = new Server(PORT, HOST, router, ALLOWED_ORIGIN);
 const database = new Database(DB_URI);
 
 server.start();

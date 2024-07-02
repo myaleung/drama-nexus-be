@@ -13,16 +13,16 @@ export default class Server {
     origin: this.#allowedOrigin, //allow only the react front end to be the origin
     credentials: true, //allow for the use of the auth tokens
     methods: ['GET', 'POST', 'PATCH', 'PUT'], //allowed methods
-    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'x-access-token', 'x-userprofile'], //allowed headers
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization', 'x-access-token', 'x-userprofile'], //allowed headers
   };
 
-  constructor(port, host, router) {
+  constructor(port, host, router, allowedOrigin) {
     this.#app = express();
     this.#port = port;
     this.#host = host;
     this.#server = null;
     this.#router = router;
-    this.#allowedOrigin = process.env.FRONT_END_URL;
+    this.#allowedOrigin = allowedOrigin;
   }
 
   getApp = () => {
