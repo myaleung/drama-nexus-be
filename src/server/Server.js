@@ -7,14 +7,8 @@ export default class Server {
   #port;
   #router;
   #server;
-  #allowedOrigin
-
-  #corsOptions = {
-    origin: this.#allowedOrigin, //allow only the react front end to be the origin
-    credentials: true, //allow for the use of the auth tokens
-    methods: ['GET', 'DELETE', 'POST', 'PATCH', 'PUT'], //allowed methods
-    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization', 'x-access-token', 'x-userprofile'], //allowed headers
-  };
+  #allowedOrigin  
+  #corsOptions;
 
   constructor(port, host, router, allowedOrigin) {
     this.#app = express();
@@ -23,6 +17,12 @@ export default class Server {
     this.#server = null;
     this.#router = router;
     this.#allowedOrigin = allowedOrigin;
+    this.#corsOptions = {
+      origin: this.#allowedOrigin, //allow only the react front end to be the origin
+      credentials: true, //allow for the use of the auth tokens
+      methods: ['GET', 'DELETE', 'POST', 'PUT'], //allowed methods
+      allowedHeaders: ['Content-Type', 'Authorization', 'x-userprofile'], //allowed headers
+    };
   }
 
   getApp = () => {

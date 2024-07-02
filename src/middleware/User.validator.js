@@ -1,4 +1,5 @@
 import * as expressValidator from "express-validator";
+import User from "../models/User.model.js";
 
 export default class UserValidator {
   static validate = () => {
