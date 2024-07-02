@@ -20,9 +20,9 @@ export default class DramaRoutes {
   #initialiseRoutes = () => {
     this.#router.use((req, res, next) => {
       res.header("Access-Control-Allow-Origin", this.#origin);
-      res.header("Access-Control-Allow-Methods", "POST, PUT");
+      res.header("Access-Control-Allow-Methods", "GET, DELETE, POST, PUT");
       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-access-token, x-userprofile");
-      res.header("Access-Control-Allow-Credentials", "true");
+      res.header("Access-Control-Allow-Credentials", true);
       next();
     });
     // this.#router.put(
