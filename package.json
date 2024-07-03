@@ -11,6 +11,10 @@
 		"coverage": "cross-env NODE_ENV=test c8 -t html npm test",
 		"genData": "cross-env NODE_ENV=development node genData.js"
 	},
+	"engines": {
+		"node": "20.11.1",
+		"npm": "10.2.4"
+	},
 	"keywords": [],
 	"author": "Amy Leung",
 	"license": "MIT",
