@@ -83,7 +83,6 @@ export default class DramaService {
 
   populateCastInDramaCollection = async (dramaId, castList) => {
     try {
-      console.log(await Drama.findOne({ dramaId: dramaId }));
       if (cast.actor === "" || cast.actor === null || cast.role === "") { return; }
       return await Drama.updateOne({ dramaId: dramaId }, { $set: { cast: castList } }, { new: true });
     } catch (e) {
