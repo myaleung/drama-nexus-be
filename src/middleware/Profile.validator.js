@@ -26,7 +26,7 @@ export default class ProfileValidator {
           .trim()
           .withMessage("A valid image URL should be provided"),
         expressValidator.body("bio")
-          .optional()
+          .optional({ checkFalsy: true })
           .isString()
           .trim()
           .matches(/^[a-zA-Z0-9\s\.\,\!\?\-]+$/)
