@@ -9,7 +9,7 @@ export default class ProfileValidator {
           .isString()
           .withMessage("Please provide your current password"),
         expressValidator.body("newPassword")
-          .optional()
+          .optional({ checkFalsy: true })
           .isString()
           .trim()
           .isStrongPassword({
