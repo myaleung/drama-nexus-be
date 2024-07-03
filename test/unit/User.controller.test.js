@@ -1,6 +1,6 @@
 import { assert, expect } from "chai";
 import Sinon from "sinon";
-import BcryptHash from "../../src/utils/bcrypt.hash.js";
+import BcryptHash from "../../src/middleware/Bcrypt.hash.js";
 import testUserData from "../data/testData.js";
 import User from "../../src/models/User.model.js";
 import UserController from "../../src/controllers/User.controller.js";

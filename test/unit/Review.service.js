@@ -1,6 +1,7 @@
 import { assert, expect } from "chai";
 import Sinon from "sinon";
 import Review from "../../src/models/Review.model.js";
+import testReviewData from "../data/testReviewData.js";
 
 describe("Review Service", () => {
   describe("Review Creation Tests", () => {
@@ -8,8 +9,8 @@ describe("Review Service", () => {
     let testReview2;
     let saveStub;
     beforeEach(() => {
-      testReview1 = testReviewData.testReviewData[0];
-      testReview2 = testReviewData.testReviewData[1];
+      testReview1 = testReviewData.testReviews[0];
+      testReview2 = testReviewData.testReviews[1];
       if (saveStub && typeof saveStub.restore === 'function') {
         saveStub.restore();
       }
@@ -42,6 +43,16 @@ describe("Review Service", () => {
       } catch (e) {
         expect(e.message).to.equal("Invalid Review");
       }
+      Sinon.assert.calledOnce(saveStub);
+    });
+
+    it("should save a review with the user's objectId", async () => { 
+      const review = new Review(testReview1);
+      saveStub.returns(review);
+
+      const newReview = await review.save();
+
+      assert.equal(newReview.user, testReview1.user);
       Sinon.assert.calledOnce(saveStub);
     });
   });

@@ -76,22 +76,8 @@ export default class DramaController {
     try {
       // loop over dramas
       // for each dramaID, add cast (updateOne) which matches cast.json dramaID
-      // const dramas = await this.#service.getAllDramas();
-      // if (!dramas) throw new Error("Drama data not found");
-
       const castData = await this.#service.populateDramaCast();
       if (!castData) throw new Error("Cast data not found");
-
-      // for (const drama of dramas) {
-      // const dramaCast = castData.data.find((item) => {
-      //   return item.id === drama.dramaId
-      // });
-      // console.log(dramaCast);
-      // if (!dramaCast || dramaCast === undefined) {
-      //   console.log(`Drama ID ${drama.dramaId} not found in cast data`);
-      //   continue;
-      // }
-      // }
 
       for (const dramaInfo of castData.data) {
         const dramaId = dramaInfo.id;
@@ -103,7 +89,6 @@ export default class DramaController {
           };
           // query mongodb actors where actorId = castMember.id
           const actor = await this.#service.getActor(castMember.id);
-          console.log(actor);
           if (actor !== null && actor !== undefined) { // if actor exists, update castItem
             castItem.actor = actor._id;
             castItem.role = castMember.character;
