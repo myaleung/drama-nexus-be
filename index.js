@@ -10,9 +10,9 @@ Config.load();
 const { PORT, HOST, DB_URI, ALLOWED_ORIGIN } = process.env;
 
 const router = new Router();
-const dramaRoutes = new DramaRoutes(ALLOWED_ORIGIN);
-const reviewRoutes = new ReviewRoutes(ALLOWED_ORIGIN);
-const userRoutes = new UserRoutes(ALLOWED_ORIGIN);
+const dramaRoutes = new DramaRoutes();
+const reviewRoutes = new ReviewRoutes();
+const userRoutes = new UserRoutes();
 router.addRouter(dramaRoutes);
 router.addRouter(reviewRoutes);
 router.addRouter(userRoutes);

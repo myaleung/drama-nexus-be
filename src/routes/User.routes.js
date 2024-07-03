@@ -8,10 +8,8 @@ export default class UserRoutes {
   #controller;
   #router;
   #routeStartPoint;
-  #origin;
 
-  constructor(origin = "http://localhost:5173", controller = new UserController(), routeStartPoint = "/") {
-    this.#origin = origin;
+  constructor(controller = new UserController(), routeStartPoint = "/") {
     this.#controller = controller;
     this.#routeStartPoint = routeStartPoint;
     this.#router = Router();
@@ -19,13 +17,6 @@ export default class UserRoutes {
   }
 
   #initialiseRoutes = () => {
-    // this.#router.use((req, res, next) => {
-    //   res.header("Access-Control-Allow-Origin", this.#origin);
-    //   res.header("Access-Control-Allow-Methods", "GET, DELETE, POST, PUT");
-    //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, x-access-token, x-userprofile");
-    //   res.header("Access-Control-Allow-Credentials", true);
-    //   next();
-    // });
     this.#router.post(
       "/login",
       this.#controller.loginUser
