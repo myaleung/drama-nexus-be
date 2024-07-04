@@ -10,7 +10,7 @@ export default class Server {
   #allowedOrigin  
   #corsOptions;
 
-  constructor(port, host, router, allowedOrigin) {
+  constructor(port = 5000, host, router, allowedOrigin) {
     this.#app = express();
     this.#port = port;
     this.#host = host;
