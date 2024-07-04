@@ -8,9 +8,6 @@
 		"start": "cross-env NODE_ENV=development nodemon index.js",
 		"dev": "cross-env NODE_ENV=development nodemon index.js",
 		"build": "node index.js",
-		"dokku": {
-			"predeploy": "npm run build"
-		},
 		"test": "cross-env NODE_ENV=test mocha --timeout 10000 --exit --recursive",
 		"coverage": "cross-env NODE_ENV=test c8 -t html npm test",
 		"genData": "cross-env NODE_ENV=development node genData.js"
